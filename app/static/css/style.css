@@ -1,0 +1,98 @@
+:root {
+  color-scheme: dark;
+  --bg: radial-gradient(circle at 10% 20%, #3a2b6e 0%, #1a1f3b 45%, #0e1227 100%);
+  --glass: rgba(255, 255, 255, 0.12);
+  --border: rgba(255, 255, 255, 0.24);
+  --text: #f5f7ff;
+  --accent: #85f2ff;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.shell {
+  width: min(1120px, 94%);
+  margin: 2rem auto 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
+}
+
+.hero { padding: 1.8rem; }
+.hero h1 { margin: 0 0 0.4rem; font-size: clamp(1.8rem, 3vw, 2.8rem); }
+.hero p { max-width: 70ch; }
+
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.card { padding: 1.2rem; }
+form { display: grid; gap: 0.6rem; }
+label { display: grid; gap: 0.3rem; font-size: 0.95rem; }
+.inline { display: flex; align-items: center; gap: 0.5rem; }
+input, textarea, select, button {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(12, 16, 35, 0.7);
+  color: var(--text);
+  padding: 0.7rem;
+}
+button, .button {
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  background: linear-gradient(135deg, #4ad7ff, #7b7eff);
+  color: #071024;
+  font-weight: 700;
+}
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.post-card { overflow: hidden; }
+.post-card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.65rem 0.7rem 0;
+}
+.post-card p { padding: 0 0.7rem 0.8rem; margin: 0.4rem 0 0; }
+.chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.05rem 0.6rem;
+  font-size: 0.75rem;
+}
+.msg-list { margin: 0; padding-left: 1rem; }
+.empty { padding: 1rem; }
+.skill-block {
+  white-space: pre-wrap;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  padding: 1rem;
+  background: rgba(10, 12, 25, 0.6);
+}
+.meta { opacity: 0.8; }
