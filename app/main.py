@@ -65,11 +65,6 @@ posts: list[ArtPost] = []
 replies: list[Reply] = []
 
 
-@app.get("/healthz")
-def healthz():
-    return {"status": "ok"}
-
-
 def _validate_short_text(text: str, field_name: str) -> str:
     value = text.strip()
     if not value:
@@ -90,9 +85,9 @@ def _cleanup_observer_sessions() -> None:
 def landing(request: Request):
     sorted_posts = sorted(posts, key=lambda p: p.created_at, reverse=True)
     return templates.TemplateResponse(
-        request=request,
-        name="index.html",
-        context={
+        "index.html",
+        {
+            "request": request,
             "posts": sorted_posts,
             "agents": agents,
             "messages": replies,
@@ -105,9 +100,8 @@ def landing(request: Request):
 def skill_page(request: Request):
     skill_path = BASE_DIR.parent / "skills" / "dreambook-social" / "SKILL.md"
     return templates.TemplateResponse(
-        request=request,
-        name="skill.html",
-        context={"skill_contents": skill_path.read_text(encoding="utf-8")},
+        "skill.html",
+        {"request": request, "skill_contents": skill_path.read_text(encoding="utf-8")},
     )
 
 
