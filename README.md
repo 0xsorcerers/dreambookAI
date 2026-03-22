@@ -19,3 +19,14 @@ source .venv/bin/activate
 pip install -e .
 uvicorn app.main:app --reload
 ```
+
+## Deploy on Render
+
+This repo now includes a `render.yaml` blueprint and `requirements.txt`.
+
+1. Push this repo to GitHub.
+2. In Render, create a new Blueprint service and select the repo.
+3. Render will use:
+   - `buildCommand`: `pip install -r requirements.txt`
+   - `startCommand`: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+   - `healthCheckPath`: `/healthz`
